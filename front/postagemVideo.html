@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./img/TecendoIdeias_logoOriginal.png" type="image/x-icon">
+    <title>Postar video</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h2>TecendoIdeias</h2>
+            <div class="nav_links">
+                <a href="feed.html">Home</a>
+                <a href="perfil.html">Perfil</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="shareVideo">
+            <h2>COMPARTILHE UM VÍDEO!</h2>
+            <form action="#" enctype="multipart/form-data" id="formularioVideos">
+                <section class="videoPostado">
+                    <section class="videoInfo">
+                        <section class="info">
+                            <div class="separacaoFundo">
+                                <label for="titulo"><b>Título</b></label>
+                                <input type="text" id="titulo" name="titulo">
+                            </div>
+                            <div class="separacaoFundo">
+                                <label for="video"><b>Vídeo</b></label>
+                                <input type="file" id="video" name="video">
+                            </div>
+                            <div class="separacaoFundo">
+                                <label for="descricao"><b>Descrição</b></label>
+                                <textarea wrap="hard" type="text" id="descricao" name="descricao"></textarea>
+                            </div>
+                            <div class="extras">
+                                <div class="separacaoFundo">
+                                    <label for="moldes"><b>Moldes</b></label>
+                                    <input type="file" id="moldes" multiple="multiple" name="moldes">
+    
+                                </div>
+                                <div  class="separacaoFundo">
+                                    <label for="materiais"><b>Materiais</b></label>
+                                    <input type="url" id="materiais" name="materiais">
+                                </div>
+                            </div>
+                            <div class="botaoEnviar">
+                                <button id="enviar" onclick="postar(event)" class="postar">Postar</button>
+                            </div>
+        
+                        </section>
+                    </section>
+            </form>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+    
+    <script src="scriptVideo.js"></script>
+</body>
+</html>

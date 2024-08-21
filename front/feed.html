@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./img/TecendoIdeias_logoOriginal.png" type="image/x-icon">
+    <title>TecendoIdeias</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h2>TecendoIdeias</h2>
+            <div class="nav_links">
+                <a href="#">Home</a>
+                <a href="perfil.html">Perfil</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="feed">
+            <section class="parteFeed">
+                <div class="feedVideo">
+                    <video src="#" controls></video>
+                    <div>
+                        <h3>Título vídeo</h3>
+                        <p id="nomeUsuario">usuário</p>
+                    </div>
+                </div>
+                <div class="feedVideo">
+                    <video src="#" controls></video>
+                    <div>
+                        <h3>Título vídeo</h3>
+                        <p>usuário</p>
+                    </div>
+                </div>
+                <div class="feedVideo">
+                    <video src="#" controls></video>
+                    <div>
+                        <h3>Título vídeo</h3>
+                        <p>usuário</p>
+                    </div>
+                </div>
+            </section>
+            <section class="parteFeed">
+                <div class="feedVideo">
+                    <video src="#" controls></video>
+                    <div>
+                        <h3>Título vídeo</h3>
+                        <p>usuário</p>
+                    </div>
+                </div>
+                <div class="feedVideo">
+                    <video src="#" controls></video>
+                    <div>
+                        <h3>Título vídeo</h3>
+                        <p>usuário</p>
+                    </div>
+                </div>
+                <div class="feedVideo">
+                    <video src="#" controls></video>
+                    <div>
+                        <h3>Título vídeo</h3>
+                        <p>usuário</p>
+                    </div>
+                </div>
+            </section>
+            <section class="parteFeed">
+                <div class="feedVideo">
+                    <video src="#" controls></video>
+                    <div>
+                        <h3>Título vídeo</h3>
+                        <p>usuário</p>
+                    </div>
+                </div>
+                <div class="feedVideo">
+                    <video src="#" controls></video>
+                    <div>
+                        <h3>Título vídeo</h3>
+                        <p>usuário</p>
+                    </div>
+                </div>
+                <div class="feedVideo">
+                    <video src="#" controls></video>
+                    <div>
+                        <h3>Título vídeo</h3>
+                        <p>usuário</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+<script>
+    // let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
+    // let id = usuario.id
+
+    // document.getElementById("nomeUsuario").innerHTML = usuario.nome
+
+    //essas linhas aqui faz com o que usuario volte pra tela de login se não tiver logado
+    if(!localStorage.getItem("usuarioLogado")) {
+        window.location.href = 'login.html';
+    }
+</script>
+</html>
