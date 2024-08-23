@@ -2,6 +2,7 @@ const connection = require('../config/db');
 const dotenv = require('dotenv').config();
 
 async function storeVideo(request, response) {
+    console.log("here")
     let params = Array(
         request.body.titulo,
         request.body.descricao,
@@ -13,14 +14,16 @@ async function storeVideo(request, response) {
     let query = "INSERT INTO videos(titulo,descricao,user_id,materiais,video) values(?,?,?,?,?)";
     connection.query(query, params, (err, results) => {
         if (results) {
+            console.log("results", results)
             let idVideo = results.insertId;
 
             let query2 = "INSERT INTO moldes(moldes,id_video) values(?,?)";
-
+            console.log(request.files)
             request.files.forEach((file, index) => {
-                if (index > 0) {
+
+                if(file.mimetype != "video/mp4") {
                     connection.query(query2, [file.filename, idVideo], (err2, results2) => {
-                        if (results2) {
+                        if(index == request.files.length  - 1) {
                             response
                                 .status(200)
                                 .json({
@@ -28,17 +31,9 @@ async function storeVideo(request, response) {
                                     message: "Sucesso",
                                     data: results2
                                 })
-                        } else {
-                            response
-                                .status(400)
-                                .json({
-                                    success: false,
-                                    message: "Sem Sucesso",
-                                    data: err2
-                                })
                         }
                     });
-                }
+                }              
             });
         } else {
             response
@@ -53,7 +48,6 @@ async function storeVideo(request, response) {
 }
 
 async function getVideo(request, response) {
-    console.log("entrou aqui no get video")
 
     const query3 = "SELECT * FROM videos order by id desc"
 
@@ -86,6 +80,7 @@ async function getVideosById(request, response) {
 
     const query = "SELECT * FROM videos where id = ?"
         connection.query(query, params, (err, results) => {
+            console.log(err)
             if (results.length > 0) {
                 response.status(200).json({
                     success: true,

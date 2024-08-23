@@ -19,6 +19,7 @@ button.onclick = async function (event) {
 
     if(content.success) {
         alert("Sucesso")
+        window.location.href = 'login.html';
     } else {
         alert('Não');
     }

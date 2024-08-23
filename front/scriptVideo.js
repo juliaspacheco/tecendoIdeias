@@ -38,6 +38,7 @@ async function postar(event) {
 
     if(content.success) {
         alert("sucesso")
+        window.location.href = 'perfil.html';
     } else {
         alert('não foi criado');
         console.log(content.sql);
