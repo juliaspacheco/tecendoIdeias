@@ -1,3 +1,4 @@
+// Rotas vídeo
 const { Router } = require('express');
 const upload = require('../config/multer'); 
 const router = Router();

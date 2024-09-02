@@ -4,8 +4,6 @@ let button = document.getElementById("enviar");
 async function postar(event) {
     event.preventDefault();
     
-    // let form = document.getElementById("formularioVideos");
-    
     let formData = new FormData();
 
     let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
@@ -23,11 +21,6 @@ async function postar(event) {
         formData.append("files", moldes[i])
     }
     console.log(formData.get('files'));
-
-    // console.log(formData.get('idUsuario'));
-    // console.log(formData.get('titulo'));
-    // console.log(formData.get('file'));
-    // console.log(formData.get('files'));
     
     const response = await fetch('http://localhost:3001/api/store/video', {
         method: "POST", 

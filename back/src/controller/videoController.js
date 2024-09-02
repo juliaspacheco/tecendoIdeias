@@ -15,15 +15,20 @@ async function storeVideo(request, response) {
     connection.query(query, params, (err, results) => {
         if (results) {
             console.log("results", results)
-            let idVideo = results.insertId;
+            let idVideo = results.insertId; 
+            // Pega o ID do vídeo inserido
 
             let query2 = "INSERT INTO moldes(moldes,id_video) values(?,?)";
             console.log(request.files)
             request.files.forEach((file, index) => {
+                // Itera sobre cada arquivo enviado. Se o arquivo não for um vídeo MP4, 
+                // insere o nome do arquivo e o ID do vídeo na tabela moldes
 
                 if(file.mimetype != "video/mp4") {
                     connection.query(query2, [file.filename, idVideo], (err2, results2) => {
                         if(index == request.files.length  - 1) {
+                            // Verifica se o arquivo atual é o último na lista de arquivos, para a resposta de
+                            // sucesso ser enviada apenas depois do processamento de todos os arquivos
                             response
                                 .status(200)
                                 .json({

@@ -4,7 +4,6 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 :root {
@@ -59,12 +58,9 @@ nav a {
 main {
     min-height: 80vh;
     display: flex;
-    /* gap: 10px; */
-    /* align-items: center; */
     flex-direction: column;
     font-family: "Inter";
     font-optical-sizing: auto;
-    /* font-weight: bold; */
     font-style: normal;
     text-align: center;
 }
@@ -92,8 +88,6 @@ main {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    /* border-top: 4px dashed var(--roxo-escuro);
-    border-bottom: 4px dashed var(--roxo-escuro); */
     background-color: var(--lilas);
     border: 4px dashed var(--roxo-escuro);
     filter: drop-shadow(1rem 1rem 1rem var(--roxo-escuro));
@@ -142,7 +136,6 @@ main {
     gap: 8px;
     font-weight: bold;
     letter-spacing: 3px;
-    /* font-weight: lighter; */
     color: var(--roxo-escuro);
 }
 
@@ -151,7 +144,6 @@ main {
     outline: 0;
     border: 0;
     width: 25vw;
-    /* height: 5vh; */
     border-radius: 0;
     background-color: var(--lilas);
     border-bottom: 3px solid var(--roxo-escuro);
@@ -371,7 +363,6 @@ video {
     gap: 10px;
     border-radius: 10px;
     border: 1px solid var(--preto);
-    /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
 }
 
 .separacaoFundo button{
@@ -438,7 +429,6 @@ video {
 }
 
 .comentarios p{
-    /* font-family: "Inter"; */
     background-color: var(--roxo);
     border-radius: 8px;
     border: 1px solid var(--preto);
