@@ -187,22 +187,23 @@ footer {
     gap: 12px;
 }
 
-#titulo, #video, #moldes, #materiais {
-    width: 100%;
+#titulo, #video {
+    width: 98%;
     padding: 0.5%;
     background-color: var(--fundo);
     border: 2px solid var(--roxo-escuro);
-}  
+} 
 
-#materiais{
-    width: 100%;
+#moldes, #materiais {
+    width: 95%;
     padding: 1%;
     background-color: var(--fundo);
     border: 2px solid var(--roxo-escuro);
 }
 
+
 #descricao {
-    width: 100%;
+    width: 98%;
     height: 100px;
     padding: 0.5%;
     background-color: var(--fundo);
@@ -340,12 +341,12 @@ footer {
 }
 
 video {
-    width: 95%;
+    width: 100%;
     border-radius: 8px;
 }
 
 .info {
-    width: 95%;
+    width: 94%;
     background-color: var(--roxo-escuro);
     display: flex;
     flex-direction: column;
@@ -378,10 +379,18 @@ video {
 .separacaoFundo button:hover{
     font-weight: bold;
     background-color: var(--roxo);
+    cursor: pointer;
 }
 
 .separacaoFundo h4{
     letter-spacing: 1px;
+}
+
+#materiaisLink {
+    text-align: center;
+    font-size: small;
+    font-weight: bold;
+    word-break: break-all;
 }
 
 .extras{
@@ -389,6 +398,7 @@ video {
     grid-template-columns: 49% 49%;
     gap: 2%
 }
+
 
 .comentarios {
     font-family: "Inter";
@@ -451,6 +461,7 @@ video {
 .comentarios button:hover{
     font-weight: bold;
     color: var(--roxo);
+    cursor: pointer;
 }
 
 .seuComentario {

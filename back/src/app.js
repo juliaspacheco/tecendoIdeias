@@ -12,9 +12,11 @@ app.use('/uploads', express.static(__dirname + '\\uploads'));
 const router = require('./routes/cadastroRouter');
 const videoRouter = require('./routes/videoRouter');
 const userRouter = require('./routes/userRouter');
+const comentarioRouter = require('./routes/comentarioRouter');
 
 app.use('/api', router);
 app.use('/api', videoRouter);
 app.use('/api', userRouter);
+app.use('/api', comentarioRouter);
 
 module.exports = app;

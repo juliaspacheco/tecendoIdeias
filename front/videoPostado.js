@@ -1,10 +1,5 @@
 // Pág de detalhes do vídeo
 document.addEventListener('DOMContentLoaded', function() {
-// adiciona um ouvinte de evento que executa a função assíncrona fornecida assim que 
-// o conteúdo HTML da página for completamente carregado
-
-// window.location.search retorna a parte da URL que contém os parâmetros de consulta
-// para que ocorra a manipulação dos parâmetros da URL ao acessar seus valores
     const urlParams = new URLSearchParams(window.location.search)
     const videoId = urlParams.get("id")
 
@@ -15,20 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         // converte a resposta da solicitação para um objeto
         .then(data => {
-            // contém os detalhes do vídeo retornados pela API
             if(data.success) {
-                // Verifica se os detalhes do vídeo foram encontrados, se sim:
                 let detalhesMain = document.getElementById("detalhes")
+                
                 detalhesMain.innerHTML = 
                 `<section class="videoPostado">
                 <section class="videoInfo">
-                    <h4>usuário</h4>
-                    <video src="http://localhost:3001/uploads/${data.data.video}" controls></video>
-                                                            // data refere-se ao objeto JSON retornado pela resposta da 
-                                                            // API após ser convertido com response.json()
-                                                            // O segundo data refere-se ao campo data dentro desse objeto(que tem as 
-                                                            // informações do video, titulo e descrição)
-                                                            
+                    <h4>${data.data.idUsuario}</h4>
+                    <video src="http://localhost:3001/uploads/${data.data.video}" controls></video>                                       
                     <h3>${data.data.titulo}</h3>
                     <section class="info">
                         <div class="separacaoFundo">
@@ -38,16 +27,22 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="extras">
                             <div class="separacaoFundo">
                                 <h4>Moldes</h4>
-                                <button>Baixar</button>
+                                <img src="http://localhost:3001/uploads/${data.data.moldes}">
+                                <button id="baixarMoldes">Baixar</button>
                             </div>
                             <div  class="separacaoFundo">
                                 <h4>Materiais</h4>
-                                <button>Copiar link</button>
+                                <div>
+                                    <p id="materiaisLink">${data.data.materiais}</p>
+                                </div>
+                                <button id="botaoCopiar">Copiar link</button>
                             </div>
                         </div>
+                        
     
                     </section>
                 </section>
+
                 <section class="comentarios">
                 <h3>COMENTÁRIOS</h3>
                 <div class="container">
@@ -103,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 <section class="seuComentario">
-                    <h4 id="idUsuario">Seu usuário</h4>
+                    <h4 id="idUsuario">${data.data.idUsuario}</h4>
                     <div>
                         <input id="comentario" type="text" placeholder="Adicione um comentário">
                         <button id="postar" onclick="postar(event)">Postar</button>
@@ -111,11 +106,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 </section>
             </section>
         </section>
-                `
+                `;
+                // Copiar link dos materiais
+                let link = document.getElementById('materiaisLink');
+                let botaoCopiar = document.getElementById('botaoCopiar');
+
+                botaoCopiar.addEventListener('click', () => {
+                    // API Clipboard para conseguir copiar texto de <p>
+                    navigator.clipboard.writeText(link.textContent)
+                        .catch(err => {
+                            console.error('Erro: ', err);
+                        });
+                });
+
             } else {
                 const detalhesMain = document.getElementById("detalhes")
                 detalhesMain.innerHTML = `Não há videos`
             }
-        })
+        });
     }
 })

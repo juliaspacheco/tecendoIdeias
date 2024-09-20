@@ -1,6 +1,5 @@
 let button = document.getElementById("enviar");
 
-// button.onclick = async function(event) {
 async function postar(event) {
     event.preventDefault();
     
