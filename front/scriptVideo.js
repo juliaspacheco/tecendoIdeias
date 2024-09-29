@@ -7,6 +7,7 @@ async function postar(event) {
 
     let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
     let id = usuario.id
+    // document.getElementById("nomeUsuario").innerHTML = usuario.nome
 
     formData.append("idUsuario", usuario.id);
     formData.append("titulo",document.getElementById('titulo').value);

@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 detalhesMain.innerHTML = 
                 `<section class="videoPostado">
                 <section class="videoInfo">
-                    <h4>${data.data.idUsuario}</h4>
+                    <h4 id="nomeUsuario"></h4>
                     <video src="http://localhost:3001/uploads/${data.data.video}" controls></video>                                       
                     <h3>${data.data.titulo}</h3>
                     <section class="info">
@@ -54,24 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <button>Responder</button>
                         </div>
                     </div>
-                    <div class="containerDiv">
-                        <h4>Usuário</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-                        labore et dolore magna aliqua.</p>
-                        <div class="botoes">
-                            <button>Ver resposta(s)</button>
-                            <button>Responder</button>
-                        </div>
-                    </div>
-                    <div class="containerDiv">
-                        <h4>Usuário</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-                        labore et dolore magna aliqua.</p>
-                        <div class="botoes">
-                            <button>Ver resposta(s)</button>
-                            <button>Responder</button>
-                        </div>
-                    </div>
+
                     <div class="containerDiv">
                         <h4>Usuário</h4>
                         <p>Comentário</p>
@@ -80,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <button>Responder</button>
                         </div>
                     </div>
+
                     <div class="containerDiv">
                         <h4>Usuário</h4>
                         <p>Comentário</p>
@@ -88,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <button>Responder</button>
                         </div>
                     </div>
+
                     <div class="containerDiv">
                         <h4>Usuário</h4>
                         <p>Comentário</p>
@@ -97,8 +82,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                 </div>
+
                 <section class="seuComentario">
-                    <h4 id="idUsuario">${data.data.idUsuario}</h4>
+                    <h4 id="">Seu comentário</h4>
                     <div>
                         <input id="comentario" type="text" placeholder="Adicione um comentário">
                         <button id="postar" onclick="postar(event)">Postar</button>
@@ -118,6 +104,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             console.error('Erro: ', err);
                         });
                 });
+
+                let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
+                
+                document.getElementById("nomeUsuario").innerHTML = usuario.nome;
+
 
             } else {
                 const detalhesMain = document.getElementById("detalhes")
