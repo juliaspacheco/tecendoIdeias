@@ -163,6 +163,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         });
                 });
 
+<<<<<<< HEAD
+=======
+                let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
+                
+                document.getElementById("nomeUsuario").innerHTML = usuario.nome;
+
+>>>>>>> 3cc723d290747e97ffd3ce7b8f86db041f26385f
 
             } else {
                 const detalhesMain = document.getElementById("detalhes")
