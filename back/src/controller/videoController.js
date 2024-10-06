@@ -87,11 +87,23 @@ async function getVideosById(request, response) {
         connection.query(query, params, (err, results) => {
             console.log(err)
             if (results.length > 0) {
-                response.status(200).json({
-                    success: true,
-                    data: results[0],
-                    message: "Sucesso!"
+
+
+
+
+
+                const query2 = "SELECT * FROM moldes where id_video = ?"
+
+                connection.query(query2, params, (err, results2) => {
+                    response.status(200).json({
+                        success: true,
+                        data: results[0],
+                        moldes: results2,
+                        message: "Sucesso!"
+                    })
                 })
+
+                
             } else {
                 response.status(400).json({
                     success: false,

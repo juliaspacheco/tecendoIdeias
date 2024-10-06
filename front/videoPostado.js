@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 detalhesMain.innerHTML = 
                 `<section class="videoPostado">
                 <section class="videoInfo">
-                    <h4>${data.data.idUsuario}</h4>
+                    <h4 id="nomeUsuario"></h4>
                     <video src="http://localhost:3001/uploads/${data.data.video}" controls></video>                                       
                     <h3>${data.data.titulo}</h3>
                     <section class="info">
@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="extras">
                             <div class="separacaoFundo">
                                 <h4>Moldes</h4>
-                                <img src="http://localhost:3001/uploads/${data.data.moldes}">
-                                <button id="baixarMoldes">Baixar</button>
+                                <img src=>
+                                <button id="modalBotao">Baixar</button>
                             </div>
                             <div  class="separacaoFundo">
                                 <h4>Materiais</h4>
@@ -54,24 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <button>Responder</button>
                         </div>
                     </div>
-                    <div class="containerDiv">
-                        <h4>Usuário</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-                        labore et dolore magna aliqua.</p>
-                        <div class="botoes">
-                            <button>Ver resposta(s)</button>
-                            <button>Responder</button>
-                        </div>
-                    </div>
-                    <div class="containerDiv">
-                        <h4>Usuário</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-                        labore et dolore magna aliqua.</p>
-                        <div class="botoes">
-                            <button>Ver resposta(s)</button>
-                            <button>Responder</button>
-                        </div>
-                    </div>
+
                     <div class="containerDiv">
                         <h4>Usuário</h4>
                         <p>Comentário</p>
@@ -80,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <button>Responder</button>
                         </div>
                     </div>
+
                     <div class="containerDiv">
                         <h4>Usuário</h4>
                         <p>Comentário</p>
@@ -88,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <button>Responder</button>
                         </div>
                     </div>
+
                     <div class="containerDiv">
                         <h4>Usuário</h4>
                         <p>Comentário</p>
@@ -97,17 +82,76 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                 </div>
+
                 <section class="seuComentario">
-                    <h4 id="idUsuario">${data.data.idUsuario}</h4>
+                    <h4 id="">Seu comentário</h4>
                     <div>
                         <input id="comentario" type="text" placeholder="Adicione um comentário">
                         <button id="postar" onclick="postar(event)">Postar</button>
                     </div>
                 </section>
             </section>
+            
+        <section id="modal" class="modal">
+            <div class="moldesJanela">
+                <div class="tituloBotao">
+                    <h3>MOLDES</h3>
+                    <span class="fecharJanela">&times;</span>
+                </div>
+                <div class="imgMoldeDiv">
+                    <img class="imgMolde" src="img/costuraImg1.png">
+                    <img class="imgMolde" src="img/costuraImg1.png">
+                    <img class="imgMolde" src="img/costuraImg1.png">
+                    <img class="imgMolde" src="img/costuraImg1.png">
+                    <img class="imgMolde" src="img/costuraImg1.png">
+                    <img class="imgMolde" src="img/costuraImg1.png">
+                </div>
+                <button id="baixarMoldes">Baixar</button>
+            </div>
+        </section>
         </section>
                 `;
+
+                let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
+                document.getElementById("nomeUsuario").innerHTML = usuario.nome;
+
+                // Janela/modal para baixar moldes
+
+                var modal = document.getElementById("modal");
+                var botao = document.getElementById("modalBotao");
+                var span = document.getElementsByClassName("fecharJanela")[0];
+
+                // botão para abrir a janela
+                botao.onclick = function() {
+                modal.style.display = "block";
+                }
+
+                // quando clicar no "botao" a janela fecha
+                span.onclick = function() {
+                modal.style.display = "none";
+                }
+
+                // muda a cor/estilo quando o mouse passar por cima do botão
+                span.onmouseover = function() {
+                    span.style.color = "#000"; 
+                    span.style.cursor = "pointer"; 
+                }
+
+                // volta a cor original quando o mouse sair de cima do botão
+                span.onmouseout = function() {
+                    span.style.color = "#BA90C6"; 
+                    
+                }
+
+                // quando clicar fora da janela ela fecha
+                window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }};
+
+
                 // Copiar link dos materiais
+
                 let link = document.getElementById('materiaisLink');
                 let botaoCopiar = document.getElementById('botaoCopiar');
 
@@ -118,6 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             console.error('Erro: ', err);
                         });
                 });
+
 
             } else {
                 const detalhesMain = document.getElementById("detalhes")
