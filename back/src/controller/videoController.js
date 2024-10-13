@@ -88,10 +88,6 @@ async function getVideosById(request, response) {
             console.log(err)
             if (results.length > 0) {
 
-
-
-
-
                 const query2 = "SELECT * FROM moldes where id_video = ?"
 
                 connection.query(query2, params, (err, results2) => {

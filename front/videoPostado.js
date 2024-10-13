@@ -27,8 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="extras">
                             <div class="separacaoFundo">
                                 <h4>Moldes</h4>
-                                <img src=>
-                                <button id="modalBotao">Baixar</button>
+                                <button id="modalBotao">Ver moldes</button>
                             </div>
                             <div  class="separacaoFundo">
                                 <h4>Materiais</h4>
@@ -48,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="container">
                     <div class="containerDiv">
                         <h4 id="idUsuario">Usuário</h4>
-                        <p id="comentario">Lorem ipsum dolor sit amet.</p>
+                        <p id="">Lorem ipsum dolor sit amet.</p>
                         <div class="botoes">
                             <button>Ver resposta(s)</button>
                             <button>Responder</button>
@@ -91,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </section>
             </section>
+
             
         <section id="modal" class="modal">
             <div class="moldesJanela">
@@ -99,12 +99,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="fecharJanela">&times;</span>
                 </div>
                 <div class="imgMoldeDiv">
-                    <img class="imgMolde" src="img/costuraImg1.png">
-                    <img class="imgMolde" src="img/costuraImg1.png">
-                    <img class="imgMolde" src="img/costuraImg1.png">
-                    <img class="imgMolde" src="img/costuraImg1.png">
-                    <img class="imgMolde" src="img/costuraImg1.png">
-                    <img class="imgMolde" src="img/costuraImg1.png">
+                ${
+                    Object.keys(data.moldes).map(function (key) {
+                        return "<a target='_blank'  href='http://localhost:3001/uploads/" + data.moldes[key].moldes + "'><img class='imgMolde' src='http://localhost:3001/uploads/" + data.moldes[key].moldes + "'></a>"
+                    }).join("")
+                   }
+               
                 </div>
                 <button id="baixarMoldes">Baixar</button>
             </div>
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 var botao = document.getElementById("modalBotao");
                 var span = document.getElementsByClassName("fecharJanela")[0];
 
-                // botão para abrir a janela
+                // "botão" para abrir a janela
                 botao.onclick = function() {
                 modal.style.display = "block";
                 }
@@ -150,6 +150,43 @@ document.addEventListener('DOMContentLoaded', function() {
                 }};
 
 
+                // Baixar moldes
+                const botaoBaixar = document.getElementById("baixarMoldes");
+                if (botaoBaixar) {
+                    botaoBaixar.onclick = function() {
+                        const urls = Object.keys(data.moldes).map(key => 
+                            `http://localhost:3001/uploads/${data.moldes[key].moldes}`
+                        );
+
+                        baixarArquivos(urls);
+                    };
+                }
+
+                async function baixarArquivos(urls) {
+                    for (const url of urls) {
+                        // itera sobre cada url para conseguir fazer o download de cada arquivo
+                        try {
+                            const response = await fetch(url);
+                            if (!response.ok) throw new Error(`Erro!: ${response.status}`);
+                                
+                            const blob = await response.blob();
+                            // converte a resposta em "blob" (arquivo em forma de dados binários)
+                            // blob é importante porque cria um URL que pode ser usado para download
+
+                            const a = document.createElement('a');
+                            a.href = URL.createObjectURL(blob);
+                            a.download = url.split('/').pop(); // nome do arquivo
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                            URL.revokeObjectURL(a.href); 
+                        } catch (error) {
+                            console.error(`Erro ao tentar baixar ${url}:`, error);
+                        }
+                    }
+                }              
+                                    
+
                 // Copiar link dos materiais
 
                 let link = document.getElementById('materiaisLink');
@@ -163,13 +200,41 @@ document.addEventListener('DOMContentLoaded', function() {
                         });
                 });
 
-<<<<<<< HEAD
-=======
-                let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
-                
-                document.getElementById("nomeUsuario").innerHTML = usuario.nome;
 
->>>>>>> 3cc723d290747e97ffd3ce7b8f86db041f26385f
+                // Comentários
+
+                let button = document.getElementById("postar");
+
+                button.onclick = async function (event) {
+
+                    event.preventDefault();
+
+                    let user_id = usuario.id;
+                    let comentario = document.getElementById("comentario").value;
+                    let dataAtual = new Date();
+                    let dataPostagem = dataAtual.toISOString().split('T')[0];
+                    let video_id = videoId;
+                    let data = {user_id, comentario, dataPostagem, video_id}
+
+                    console.log(data);
+
+                    const response = await fetch('http://localhost:3001/api/store/comentario', {
+                        method: "POST",
+                        headers: {"Content-type": "application/json;charset=UTF-8"},
+                        body: JSON.stringify(data)
+                    });
+
+                    let content = await response.json();
+
+                    console.log(content);
+
+                    if(content.success) {
+                        alert("Sucesso");
+                    } else {
+                        alert('Não foi criado');
+                    }
+                }
+
 
             } else {
                 const detalhesMain = document.getElementById("detalhes")
