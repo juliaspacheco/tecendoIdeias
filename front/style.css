@@ -503,7 +503,11 @@ video {
 
 .containerDiv{
     margin-right: 3%;
+<<<<<<< HEAD
     margin-bottom: 2%;
+=======
+    margin-bottom: 4%;
+>>>>>>> fddbfe1 (configuração swagger)
 }
 
 .comentarios h3{
@@ -516,7 +520,20 @@ video {
     letter-spacing: 1px;
 }
 
+<<<<<<< HEAD
 .comentarios p{
+=======
+.usuarioData {
+    display: flex;
+    justify-content: space-between;
+}
+
+.data{
+    font-size: small;
+}
+
+.comentario{
+>>>>>>> fddbfe1 (configuração swagger)
     background-color: var(--roxo);
     border-radius: 8px;
     border: 1px solid var(--preto);

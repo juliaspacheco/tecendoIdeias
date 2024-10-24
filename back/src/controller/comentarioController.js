@@ -32,6 +32,32 @@ async function storeComentario(request, response){
     })
 }
 
+<<<<<<< HEAD
 module.exports = {
     storeComentario
+=======
+async function getComentario(request, response) {
+    const query = "SELECT * FROM comentarios";
+
+    connection.query(query, (err, results) => {
+        if(results) {
+            response.status(200).json({
+                success: true,
+                message: "Sucesso!",
+                data: results
+            })
+        } else {
+            response.status(400).json({
+                success: false,
+                message: "Erro!",
+                data: err
+            })
+        }
+    })
+}
+
+module.exports = {
+    storeComentario,
+    getComentario
+>>>>>>> fddbfe1 (configuração swagger)
 }

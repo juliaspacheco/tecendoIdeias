@@ -1,6 +1,10 @@
 // Pág de perfil, com botão para redirecionar para pág de detalhes
 document.addEventListener('DOMContentLoaded', async () => {
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> fddbfe1 (configuração swagger)
     const response = await fetch('http://localhost:3001/api/get/video');
     const result = await response.json();
 

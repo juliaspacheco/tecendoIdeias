@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </section>
 
                 <section class="comentarios">
+<<<<<<< HEAD
                 <h3>COMENTÁRIOS</h3>
                 <div class="container">
                     <div class="containerDiv">
@@ -99,17 +100,72 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="fecharJanela">&times;</span>
                 </div>
                 <div class="imgMoldeDiv">
+=======
+                        <h3>COMENTÁRIOS</h3>
+                        <div class="container">
+                            <div class="containerDiv">
+                                <div class="usuarioData">
+                                    <h4 id="idUsuario">Usuário</h4>
+                                    <p class="data">19/10/2024</p>
+                                </div>
+                                <p class="comentario">Lorem ipsum dolor sit amet.</p>
+                                <div class="botoes">
+                                    <button>Ver resposta(s)</button>
+                                    <button>Responder</button>
+                                </div>
+                            </div>
+
+                            <div class="containerDiv">
+                                <div class="usuarioData">
+                                    <h4 id="idUsuario">Usuário</h4>
+                                    <p class="data">19/10/2024</p>
+                                </div>
+                                <p class="comentario">Lorem ipsum dolor sit amet.</p>
+                                <div class="botoes">
+                                    <button>Ver resposta(s)</button>
+                                    <button>Responder</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    <section class="seuComentario">
+                        <h4 id="">Seu comentário</h4>
+                        <div>
+                            <input id="comentario" class="comentario" type="text" placeholder="Adicione um comentário">
+                            <button id="postar" onclick="postar(event)">Postar</button>
+                        </div>
+                    </section>
+                </section>
+
+            
+                <section id="modal" class="modal">
+                    <div class="moldesJanela">
+                        <div class="tituloBotao">
+                            <h3>MOLDES</h3>
+                            <span class="fecharJanela">&times;</span>
+                        </div>
+                        <div class="imgMoldeDiv">
+>>>>>>> fddbfe1 (configuração swagger)
                 ${
                     Object.keys(data.moldes).map(function (key) {
                         return "<a target='_blank'  href='http://localhost:3001/uploads/" + data.moldes[key].moldes + "'><img class='imgMolde' src='http://localhost:3001/uploads/" + data.moldes[key].moldes + "'></a>"
                     }).join("")
                    }
                
+<<<<<<< HEAD
                 </div>
                 <button id="baixarMoldes">Baixar</button>
             </div>
         </section>
         </section>
+=======
+                            </div>
+                            <button id="baixarMoldes">Baixar</button>
+                        </div>
+                    </section>
+                </section>
+>>>>>>> fddbfe1 (configuração swagger)
                 `;
 
                 let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
@@ -204,17 +260,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Comentários
 
                 let button = document.getElementById("postar");
+<<<<<<< HEAD
 
                 button.onclick = async function (event) {
+=======
+                button.onclick = async function(event) {
+>>>>>>> fddbfe1 (configuração swagger)
 
                     event.preventDefault();
 
                     let user_id = usuario.id;
                     let comentario = document.getElementById("comentario").value;
                     let dataAtual = new Date();
+<<<<<<< HEAD
                     let dataPostagem = dataAtual.toISOString().split('T')[0];
                     let video_id = videoId;
                     let data = {user_id, comentario, dataPostagem, video_id}
+=======
+                    let created_at = dataAtual.toISOString().split('T')[0];
+                    let video_id = videoId;
+                    let data = {user_id, comentario, created_at, video_id}
+>>>>>>> fddbfe1 (configuração swagger)
 
                     console.log(data);
 
@@ -230,12 +296,72 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     if(content.success) {
                         alert("Sucesso");
+<<<<<<< HEAD
                     } else {
                         alert('Não foi criado');
                     }
                 }
 
 
+=======
+                        // console.log(result);
+
+                        const comentariosContainer = document.querySelector('.container');
+                            
+                                const comentariosDiv = document.createElement('div');
+                                comentariosDiv.className = 'containerDiv';
+
+                                const usuarioData = document.createElement('div');
+                                usuarioData.className = 'usuarioData';
+
+                                const usuarioNome = document.createElement('h4');
+                                usuarioNome.textContent = usuario.nome;
+
+                                const dataComentario = document.createElement('p');
+                                dataComentario.className = 'data';
+                                dataComentario.textContent = created_at;
+
+                                const comentarioPostado = document.createElement('p');
+                                comentarioPostado.className = 'comentario';
+                                comentarioPostado.textContent = comentario;
+
+                                const botoesDiv = document.createElement('div');
+                                botoesDiv.className = 'botoes';
+
+                                const verRespostas = document.createElement('button');
+                                const responder = document.createElement('button');
+
+                                usuarioData.appendChild(usuarioNome);
+                                usuarioData.appendChild(dataComentario);
+                                
+                                botoesDiv.appendChild(verRespostas);
+                                botoesDiv.appendChild(responder);
+
+                                comentariosDiv.appendChild(usuarioData);
+                                comentariosDiv.appendChild(comentarioPostado);
+                                comentariosDiv.appendChild(botoesDiv);
+
+                                comentariosContainer.appendChild(comentariosDiv);
+
+                                document.getElementById("comentario").value = "";
+                    } else {
+                        alert("erro");
+                    } 
+                };
+                
+                // document.addEventListener('DOMContentLoaded', async () => {
+                //     const response = await fetch('http://localhost:3001/api/get/video');
+                //         const result = await response.json();
+
+                //         if(result.success){
+                        
+                //             document.getElementById("comentario").value = "";
+
+                            
+                //         }
+                    
+                // })
+>>>>>>> fddbfe1 (configuração swagger)
             } else {
                 const detalhesMain = document.getElementById("detalhes")
                 detalhesMain.innerHTML = `Não há videos`

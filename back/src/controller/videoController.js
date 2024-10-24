@@ -2,7 +2,10 @@ const connection = require('../config/db');
 const dotenv = require('dotenv').config();
 
 async function storeVideo(request, response) {
+<<<<<<< HEAD
     console.log("here")
+=======
+>>>>>>> fddbfe1 (configuração swagger)
     let params = Array(
         request.body.titulo,
         request.body.descricao,
@@ -91,12 +94,33 @@ async function getVideosById(request, response) {
                 const query2 = "SELECT * FROM moldes where id_video = ?"
 
                 connection.query(query2, params, (err, results2) => {
+<<<<<<< HEAD
                     response.status(200).json({
                         success: true,
                         data: results[0],
                         moldes: results2,
                         message: "Sucesso!"
                     })
+=======
+
+                    if (results2.length > 0){
+
+                        const query3 = "SELECT comentario FROM comentarios where id_video = ?"
+
+                        connection.query(query3, params, (err, results3) => {
+
+                            response.status(200).json({
+                                success: true,
+                                data: results[0],
+                                moldes: results2,
+                                comentarios: results3,
+                                message: "Sucesso!"
+                            })
+
+                        })
+                        
+                    }
+>>>>>>> fddbfe1 (configuração swagger)
                 })
 
                 

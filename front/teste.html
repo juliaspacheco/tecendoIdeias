@@ -1,0 +1,172 @@
+<!-- Comentários -->
+<section class="comentarios">
+    <h3>COMENTÁRIOS</h3>
+    <div class="container">
+        <div class="containerDiv">
+            <div>
+                <h4 id="idUsuario">Usuário</h4>
+                <p>19/10/2024</p>
+            </div>
+            <p id="">Lorem ipsum dolor sit amet.</p>
+            <div class="botoes">
+                <button>Ver resposta(s)</button>
+                <button>Responder</button>
+            </div>
+        </div>
+
+        <div class="containerDiv">
+            <h4>Usuário</h4>
+            <p>Comentário</p>
+            <div class="botoes">
+                <button>Ver resposta(s)</button>
+                <button>Responder</button>
+            </div>
+        </div>
+
+        <div class="containerDiv">
+            <h4>Usuário</h4>
+            <p>Comentário</p>
+            <div class="botoes">
+                <button>Ver resposta(s)</button>
+                <button>Responder</button>
+            </div>
+        </div>
+
+        <div class="containerDiv">
+            <h4>Usuário</h4>
+            <p>Comentário</p>
+            <div class="botoes">
+                <button>Ver resposta(s)</button>
+                <button>Responder</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="seuComentario">
+        <h4 id="">Seu comentário</h4>
+        <div>
+            <input id="comentario" type="text" placeholder="Adicione um comentário">
+            <button id="postar" onclick="postar(event)">Postar</button>
+        </div>
+    </section>
+</section>
+
+<script>
+    const response = await fetch('http://localhost:3001/api/get/video');
+                        const result = await response.json();
+
+                        if(result.success){
+                        
+                            document.getElementById("comentario").value = "";
+
+                            const comentariosContainer = document.querySelector('.container');
+                            
+                                const comentariosDiv = document.createElement('div');
+                                comentariosDiv.className = 'containerDiv';
+
+                                const usuarioData = document.createElement('div');
+                                usuarioData.className = 'usuarioData';
+
+                                const usuarioNome = document.createElement('h4');
+                                usuarioNome.textContent = usuario.nome;
+
+                                const dataComentario = document.createElement('p');
+                                dataComentario.className = 'data';
+                                dataComentario.textContent = dataPostagem;
+
+                                const comentarioPostado = document.createElement('p');
+                                comentarioPostado.className = 'comentario';
+                                comentarioPostado.textContent = comentario;
+
+                                const botoesDiv = document.createElement('div');
+                                botoesDiv.className = 'botoes';
+
+                                const verRespostas = document.createElement('button');
+                                const responder = document.createElement('button');
+
+                                usuarioData.appendChild(usuarioNome);
+                                usuarioData.appendChild(dataComentario);
+                                
+                                botoesDiv.appendChild(verRespostas);
+                                botoesDiv.appendChild(responder);
+
+                                comentariosDiv.appendChild(usuarioData);
+                                comentariosDiv.appendChild(comentarioPostado);
+                                comentariosDiv.appendChild(botoesDiv);
+
+                                comentariosContainer.appendChild(comentariosDiv);
+                        }
+</script>
+
+
+<!-- -----FEED------ -->
+
+<section class="parteFeed">
+    <div class="feedVideo">
+        <video src="#" controls></video>
+        <div>
+            <h3>Título vídeo</h3>
+            <p id="nomeUsuario">usuário</p>
+        </div>
+    </div>
+    <div class="feedVideo">
+        <video src="#" controls></video>
+        <div>
+            <h3>Título vídeo</h3>
+            <p>usuário</p>
+        </div>
+    </div>
+    <div class="feedVideo">
+        <video src="#" controls></video>
+        <div>
+            <h3>Título vídeo</h3>
+            <p>usuário</p>
+        </div>
+    </div>
+</section>
+<section class="parteFeed">
+    <div class="feedVideo">
+        <video src="#" controls></video>
+        <div>
+            <h3>Título vídeo</h3>
+            <p>usuário</p>
+        </div>
+    </div>
+    <div class="feedVideo">
+        <video src="#" controls></video>
+        <div>
+            <h3>Título vídeo</h3>
+            <p>usuário</p>
+        </div>
+    </div>
+    <div class="feedVideo">
+        <video src="#" controls></video>
+        <div>
+            <h3>Título vídeo</h3>
+            <p>usuário</p>
+        </div>
+    </div>
+</section>
+<section class="parteFeed">
+    <div class="feedVideo">
+        <video src="#" controls></video>
+        <div>
+            <h3>Título vídeo</h3>
+            <p>usuário</p>
+        </div>
+    </div>
+    <div class="feedVideo">
+        <video src="#" controls></video>
+        <div>
+            <h3>Título vídeo</h3>
+            <p>usuário</p>
+        </div>
+    </div>
+    <div class="feedVideo">
+        <video src="#" controls></video>
+        <div>
+            <h3>Título vídeo</h3>
+            <p>usuário</p>
+        </div>
+    </div>
+</section>
